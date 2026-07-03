@@ -118,11 +118,12 @@ textarea{resize:vertical;min-height:70px}
 
 /* body */
 .rx-body{flex:1;display:grid;grid-template-columns:1fr 2.1fr;padding-top:5mm;min-height:0}
-.rx-left{padding-right:4.5mm;border-right:.8px solid var(--green-mid)}
+.rx-left{padding-right:4.5mm;border-right:.8px solid var(--green-mid);display:flex;flex-direction:column}
+.rx-left .lsec{flex:1;min-height:0;overflow:hidden}
 .rx-right{padding-left:6mm;position:relative}
 .sec-title{font-size:12.5pt;letter-spacing:.8px;color:#22301f;font-weight:600;margin-bottom:3mm}
 .block{margin-bottom:6mm;white-space:pre-wrap;font-size:11.5pt}
-.vitals{list-style:none;margin:8mm 0 9mm}
+.vitals{list-style:none;margin:1mm 0}
 .vitals li{margin-bottom:5mm;font-size:12pt;display:flex;align-items:baseline;gap:2.5mm}
 .vitals li::before{content:"•";color:#22301f;flex-shrink:0}
 .vitals li .vk{width:14mm;flex-shrink:0}
@@ -518,14 +519,20 @@ function sheetHTML(r){
     <div class="head-rule"></div>
     <div class="rx-body">
       <div class="rx-left">
-        <div class="sec-title">CHIEF COMPLAINTS</div>
-        <div class="block">${esc(r.complaints||'')}</div>
-        <ul class="vitals">
-          ${[['Diet',r.diet],['Sleep',r.sleep],['Stool',r.stool],['Urine',r.urine],['Mizaj',r.mizaj]]
-            .map(([k,v])=>`<li><span class="vk">${k}</span><span class="vv">${esc(v||'')}</span></li>`).join('')}
-        </ul>
-        <div class="sec-title">INVESTIGATIONS</div>
-        <div class="block">${esc(r.invest||'')}</div>
+        <div class="lsec">
+          <div class="sec-title">CHIEF COMPLAINTS</div>
+          <div class="block">${esc(r.complaints||'')}</div>
+        </div>
+        <div class="lsec">
+          <ul class="vitals">
+            ${[['Diet',r.diet],['Sleep',r.sleep],['Stool',r.stool],['Urine',r.urine],['Mizaj',r.mizaj]]
+              .map(([k,v])=>`<li><span class="vk">${k}</span><span class="vv">${esc(v||'')}</span></li>`).join('')}
+          </ul>
+        </div>
+        <div class="lsec">
+          <div class="sec-title">INVESTIGATIONS</div>
+          <div class="block">${esc(r.invest||'')}</div>
+        </div>
       </div>
       <div class="rx-right">
         <div class="wm">${logo ? `<img src="${LOGO_URL}" alt="">` : `<span class="wmtxt">${esc(s.clinic)}</span>`}</div>
