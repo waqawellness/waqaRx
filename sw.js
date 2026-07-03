@@ -1,6 +1,6 @@
-const CACHE = 'waqarx-v2';
+const CACHE = 'waqarx-v4';
 const ASSETS = [
-  './', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './logo.png',
+  './', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './logo.png', './signature.png',
   'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'
 ];
