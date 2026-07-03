@@ -87,8 +87,10 @@ textarea{resize:vertical;min-height:70px}
 .deco{position:absolute;left:0;right:0;pointer-events:none;z-index:2}
 .deco.top{top:0}.deco.bot{bottom:0}
 .deco svg{display:block;width:100%;height:auto;overflow:hidden!important}
-.bandphone{position:absolute;right:14mm;bottom:3.4mm;z-index:3;color:#fff;font-size:13pt;font-weight:600;display:flex;align-items:center;gap:2.5mm}
-.bandphone svg{width:5.5mm;height:5.5mm;display:block}
+.bandphone{position:absolute;right:14mm;bottom:2.4mm;z-index:3;color:#fff;display:flex;flex-direction:column;align-items:flex-end;gap:.3mm}
+.bandphone .ph{font-size:11pt;font-weight:600;display:flex;align-items:center;gap:2mm}
+.bandphone .web,.bandphone .web:visited{font-size:9pt;font-weight:500;letter-spacing:.4px;opacity:.92;color:#fff;text-decoration:none}
+.bandphone svg{width:4.6mm;height:4.6mm;display:block}
 .sheet .inner{flex:1;display:flex;flex-direction:column;padding:15mm 10mm 18mm;position:relative;z-index:1;min-height:0}
 
 /* watermark (inside right column) */
@@ -342,9 +344,9 @@ const DECO_TOP = (()=>{
   </svg>`;
 })();
 /* bottom-right angled band + light stripe */
-const DECO_BOT = `<svg viewBox="0 0 210 22" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-  <polygon points="112,12 118,12 109,22 103,22" fill="${C.s}"/>
-  <polygon points="122,12 210,12 210,22 113,22" fill="${C.g}"/>
+const DECO_BOT = `<svg viewBox="0 0 210 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <polygon points="112,11 118,11 106.3,24 100.3,24" fill="${C.s}"/>
+  <polygon points="122,11 210,11 210,24 110.3,24" fill="${C.g}"/>
 </svg>`;
 
 /* ================= screens ================= */
@@ -497,7 +499,7 @@ function sheetHTML(r){
   return `<div class="sheet">
    <div class="deco top">${DECO_TOP}</div>
    <div class="deco bot">${DECO_BOT}</div>
-   <div class="bandphone">${WA_WHITE} ${esc(s.phone)}</div>
+   <div class="bandphone"><span class="ph">${WA_WHITE} ${esc(s.phone)}</span><a class="web" href="${esc(s.website||'https://waqawellness.com/')}" target="_blank" rel="noopener">${esc((s.website||'https://waqawellness.com/').replace(/^https?:\/\//,'www.').replace(/\/$/,'').replace(/^www\.www\./,'www.'))}</a></div>
    <div class="inner">
     <div class="rx-head">
       <div class="fields">
